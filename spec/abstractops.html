@@ -1446,6 +1446,7 @@
           1. If _property_ is in the Property column of <emu-xref href="#table-temporal-field-requirements"></emu-xref> and there is a Conversion value in the same row, then
             1. Let _Conversion_ represent the abstract operation named by the Conversion value of the same row.
             1. Set _value_ to ? _Conversion_(_value_).
+            1. If _value_ is +∞ or -∞, throw a *RangeError* exception.
         1. Perform ! CreateDataPropertyOrThrow(_result_, _property_, _value_).
       1. Return _result_.
     </emu-alg>
