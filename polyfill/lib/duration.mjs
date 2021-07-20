@@ -31,16 +31,16 @@ export class Duration {
     microseconds = 0,
     nanoseconds = 0
   ) {
-    years = ES.ToInteger(years);
-    months = ES.ToInteger(months);
-    weeks = ES.ToInteger(weeks);
-    days = ES.ToInteger(days);
-    hours = ES.ToInteger(hours);
-    minutes = ES.ToInteger(minutes);
-    seconds = ES.ToInteger(seconds);
-    milliseconds = ES.ToInteger(milliseconds);
-    microseconds = ES.ToInteger(microseconds);
-    nanoseconds = ES.ToInteger(nanoseconds);
+    years = ES.ToFiniteInteger(years);
+    months = ES.ToFiniteInteger(months);
+    weeks = ES.ToFiniteInteger(weeks);
+    days = ES.ToFiniteInteger(days);
+    hours = ES.ToFiniteInteger(hours);
+    minutes = ES.ToFiniteInteger(minutes);
+    seconds = ES.ToFiniteInteger(seconds);
+    milliseconds = ES.ToFiniteInteger(milliseconds);
+    microseconds = ES.ToFiniteInteger(microseconds);
+    nanoseconds = ES.ToFiniteInteger(nanoseconds);
 
     const sign = ES.DurationSign(
       years,
