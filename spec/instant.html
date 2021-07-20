@@ -297,6 +297,8 @@
       <emu-alg>
         1. Let _instant_ be the *this* value.
         1. Perform ? RequireInternalSlot(_instant_, [[InitializedTemporalInstant]]).
+        1. If _options_ is *undefined*, then
+          1. Throw a *TypeError* exception.
         1. Set _options_ to ? GetOptionsObject(_options_).
         1. Let _smallestUnit_ be ? ToSmallestTemporalUnit(_options_, « *"year"*, *"month"*, *"week"*, *"day"* », *undefined*).
         1. If _smallestUnit_ is *undefined*, throw a *RangeError* exception.
