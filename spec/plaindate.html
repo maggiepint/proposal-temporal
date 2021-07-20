@@ -57,7 +57,6 @@
       <emu-alg>
         1. Set _options_ to ? GetOptionsObject(_options_).
         1. If Type(_item_) is Object and _item_ has an [[InitializedTemporalDate]] internal slot, then
-          1. Perform ? ToTemporalOverflow(_options_).
           1. Return ? CreateTemporalDate(_item_.[[ISOYear]], _item_.[[ISOMonth]], _item_.[[ISODay]], _item_.[[Calendar]]).
         1. Return ? ToTemporalDate(_item_, _options_).
       </emu-alg>
@@ -691,7 +690,6 @@
           1. Let _fieldNames_ be ? CalendarFields(_calendar_, « *"day"*, *"month"*, *"monthCode"*, *"year"* »).
           1. Let _fields_ be ? PrepareTemporalFields(_item_, _fieldNames_, «»).
           1. Return ? DateFromFields(_calendar_, _fields_, _options_).
-        1. Perform ? ToTemporalOverflow(_options_).
         1. Let _string_ be ? ToString(_item_).
         1. Let _result_ be ? ParseTemporalDateString(_string_).
         1. Assert: ! IsValidISODate(_result_.[[Year]], _result_.[[Month]], _result_.[[Day]]) is *true*.

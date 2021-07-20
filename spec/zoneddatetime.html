@@ -55,9 +55,6 @@
       <emu-alg>
         1. Set _options_ to ? GetOptionsObject(_options_).
         1. If Type(_item_) is Object and _item_ has an [[InitializedTemporalZonedDateTime]] internal slot, then
-          1. Perform ? ToTemporalOverflow(_options_).
-          1. Perform ? ToTemporalDisambiguation(_options_).
-          1. Perform ? ToTemporalOffset(_options_, *"reject"*).
           1. Return ? CreateTemporalZonedDateTime(_item_.[[Nanoseconds]], _item_.[[TimeZone]], _item_.[[Calendar]]).
         1. Return ? ToTemporalZonedDateTime(_item_, _options_).
       </emu-alg>
@@ -1117,7 +1114,6 @@
           1. If _offsetString_ is not *undefined*, set it to ? ToString(_offsetString_).
           1. Let _result_ be ? InterpretTemporalDateTimeFields(_calendar_, _fields_, _options_).
         1. Else,
-          1. Perform ? ToTemporalOverflow(_options_).
           1. Let _string_ be ? ToString(_item_).
           1. Let _result_ be ? ParseTemporalZonedDateTimeString(_string_).
           1. If _result_.[[TimeZoneName]] is *undefined*, throw a *RangeError* exception.

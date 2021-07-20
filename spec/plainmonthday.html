@@ -59,7 +59,6 @@
       <emu-alg>
         1. Set _options_ to ? GetOptionsObject(_options_).
         1. If Type(_item_) is Object and _item_ has an [[InitializedTemporalMonthDay]] internal slot, then
-          1. Perform ? ToTemporalOverflow(_options_).
           1. Return ? CreateTemporalMonthDay(_item_.[[ISOMonth]], _item_.[[ISODay]], _item_.[[Calendar]], _item_.[[ISOYear]]).
         1. Return ? ToTemporalMonthDay(_item_, _options_).
       </emu-alg>
@@ -369,7 +368,6 @@
           1. If _calendarAbsent_ is *true*, and _month_ is not *undefined*, and _monthCode_ is *undefined* and _year_ is *undefined*, then
             1. Perform ! CreateDataPropertyOrThrow(_fields_, *"year"*, 𝔽(_referenceISOYear_)).
           1. Return ? MonthDayFromFields(_calendar_, _fields_, _options_).
-        1. Perform ? ToTemporalOverflow(_options_).
         1. Let _string_ be ? ToString(_item_).
         1. Let _result_ be ? ParseTemporalMonthDayString(_string_).
         1. Let _calendar_ be ? ToTemporalCalendarWithISODefault(_result_.[[Calendar]]).
