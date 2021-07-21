@@ -26,13 +26,10 @@
           1. Throw a *TypeError* exception.
         1. If _referenceISOYear_ is *undefined*, then
           1. Set _referenceISOYear_ to *1972*<sub>𝔽</sub>.
-        1. Let _m_ be ? ToIntegerOrInfinity(_isoMonth_).
-        1. If _m_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _d_ be ? ToIntegerOrInfinity(_isoDay_).
-        1. If _d_ is +∞ or -∞, throw a *RangeError* exception.
+        1. Let _m_ be ? ToInteger(_isoMonth_).
+        1. Let _d_ be ? ToInteger(_isoDay_).
         1. Let _calendar_ be ? ToTemporalCalendarWithISODefault(_calendarLike_).
-        1. Let _ref_ be ? ToIntegerOrInfinity(_referenceISOYear_).
-        1. If _ref_ is +∞ or -∞, throw a *RangeError* exception.
+        1. Let _ref_ be ? ToInteger(_referenceISOYear_).
         1. Return ? CreateTemporalMonthDay(_m_, _d_, _calendar_, _ref_, NewTarget).
       </emu-alg>
       <emu-note>1972 is the first leap year after the Unix epoch.</emu-note>

@@ -117,7 +117,7 @@
         1. Assert: Type(_calendar_) is Object.
         1. Let _result_ be ? Invoke(_calendar_, *"month"*, « _dateLike_ »).
         1. If _result_ is *undefined*, throw a *RangeError* exception.
-        1. Return ? ToPositiveIntegerOrInfinity(_result_).
+        1. Return ? ToPositiveInteger(_result_).
       </emu-alg>
     </emu-clause>
 
@@ -143,7 +143,7 @@
         1. Assert: Type(_calendar_) is Object.
         1. Let _result_ be ? Invoke(_calendar_, *"day"*, « _dateLike_ »).
         1. If _result_ is *undefined*, throw a *RangeError* exception.
-        1. Return ? ToPositiveIntegerOrInfinity(_result_).
+        1. Return ? ToPositiveInteger(_result_).
       </emu-alg>
     </emu-clause>
 

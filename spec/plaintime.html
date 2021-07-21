@@ -22,22 +22,16 @@
       <p>
         When the `Temporal.PlainTime` function is called, the following steps are taken:
       </p>
-      <emu-note>The value of ? ToIntegerOrInfinity(*undefined*) is 0.</emu-note>
+      <emu-note>The value of ? ToInteger(*undefined*) is 0.</emu-note>
       <emu-alg>
         1. If NewTarget is *undefined*, then
           1. Throw a *TypeError* exception.
-        1. Let _hour_ be ? ToIntegerOrInfinity(_hour_).
-        1. If _hour_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _minute_ be ? ToIntegerOrInfinity(_minute_).
-        1. If _minute_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _second_ be ? ToIntegerOrInfinity(_second_).
-        1. If _second_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _millisecond_ be ? ToIntegerOrInfinity(_millisecond_).
-        1. If _millisecond_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _microsecond_ be ? ToIntegerOrInfinity(_microsecond_).
-        1. If _microsecond_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _nanosecond_ be ? ToIntegerOrInfinity(_nanosecond_).
-        1. If _nanosecond_ is +∞ or -∞, throw a *RangeError* exception.
+        1. Let _hour_ be ? ToInteger(_hour_).
+        1. Let _minute_ be ? ToInteger(_minute_).
+        1. Let _second_ be ? ToInteger(_second_).
+        1. Let _millisecond_ be ? ToInteger(_millisecond_).
+        1. Let _microsecond_ be ? ToInteger(_microsecond_).
+        1. Let _nanosecond_ be ? ToInteger(_nanosecond_).
         1. Return ? CreateTemporalTime(_hour_, _minute_, _second_, _millisecond_, _microsecond_, _nanosecond_, NewTarget).
       </emu-alg>
     </emu-clause>

@@ -21,28 +21,19 @@
       <p>
         When the `Temporal.PlainDateTime` function is called, the following steps are taken:
       </p>
-      <emu-note>The value of ? ToIntegerOrInfinity(*undefined*) is 0.</emu-note>
+      <emu-note>The value of ? ToInteger(*undefined*) is 0.</emu-note>
       <emu-alg>
         1. If NewTarget is *undefined*, then
           1. Throw a *TypeError* exception.
-        1. Let _isoYear_ be ? ToIntegerOrInfinity(_isoYear_).
-        1. If _isoYear_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _isoMonth_ be ? ToIntegerOrInfinity(_isoMonth_).
-        1. If _isoMonth_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _isoDay_ be ? ToIntegerOrInfinity(_isoDay_).
-        1. If _isoDay_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _hour_ be ? ToIntegerOrInfinity(_hour_).
-        1. If _hour_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _minute_ be ? ToIntegerOrInfinity(_minute_).
-        1. If _minute_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _second_ be ? ToIntegerOrInfinity(_second_).
-        1. If _second_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _millisecond_ be ? ToIntegerOrInfinity(_millisecond_).
-        1. If _millisecond_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _microsecond_ be ? ToIntegerOrInfinity(_microsecond_).
-        1. If _microsecond_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _nanosecond_ be ? ToIntegerOrInfinity(_nanosecond_).
-        1. If _nanosecond_ is +∞ or -∞, throw a *RangeError* exception.
+        1. Let _isoYear_ be ? ToInteger(_isoYear_).
+        1. Let _isoMonth_ be ? ToInteger(_isoMonth_).
+        1. Let _isoDay_ be ? ToInteger(_isoDay_).
+        1. Let _hour_ be ? ToInteger(_hour_).
+        1. Let _minute_ be ? ToInteger(_minute_).
+        1. Let _second_ be ? ToInteger(_second_).
+        1. Let _millisecond_ be ? ToInteger(_millisecond_).
+        1. Let _microsecond_ be ? ToInteger(_microsecond_).
+        1. Let _nanosecond_ be ? ToInteger(_nanosecond_).
         1. Let _calendar_ be ? ToTemporalCalendarWithISODefault(_calendarLike_).
         1. Return ? CreateTemporalDateTime(_isoYear_, _isoMonth_, _isoDay_, _hour_, _minute_, _second_, _millisecond_, _microsecond_, _nanosecond_, _calendar_, NewTarget).
       </emu-alg>

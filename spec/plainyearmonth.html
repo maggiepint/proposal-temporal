@@ -26,13 +26,10 @@
           1. Throw a *TypeError* exception.
         1. If _referenceISODay_ is *undefined*, then
           1. Set _referenceISODay_ to *1*<sub>𝔽</sub>.
-        1. Let _y_ be ? ToIntegerOrInfinity(_isoYear_).
-        1. If _y_ is +∞ or -∞, throw a *RangeError* exception.
-        1. Let _m_ be ? ToIntegerOrInfinity(_isoMonth_).
-        1. If _m_ is +∞ or -∞, throw a *RangeError* exception.
+        1. Let _y_ be ? ToInteger(_isoYear_).
+        1. Let _m_ be ? ToInteger(_isoMonth_).
         1. Let _calendar_ be ? ToTemporalCalendarWithISODefault(_calendarLike_).
-        1. Let _ref_ be ? ToIntegerOrInfinity(_referenceISODay_).
-        1. If _ref_ is +∞ or -∞, throw a *RangeError* exception.
+        1. Let _ref_ be ? ToInteger(_referenceISODay_).
         1. Return ? CreateTemporalYearMonth(_y_, _m_, _calendar_, _ref_, NewTarget).
       </emu-alg>
     </emu-clause>

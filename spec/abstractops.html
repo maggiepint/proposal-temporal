@@ -1410,16 +1410,27 @@
     </emu-alg>
   </emu-clause>
 
-  <emu-clause id="sec-temporal-topositiveintegerorinfinity" aoid="ToPositiveIntegerOrInfinity">
-    <h1>ToPositiveIntegerOrInfinity ( _argument_ )</h1>
+  <emu-clause id="sec-temporal-topositiveinteger" aoid="ToPositiveInteger">
+    <h1>ToPositiveInteger ( _argument_ )</h1>
     <p>
-      The abstract operation ToPositiveIntegerOrInfinity takes argument _argument_. It converts _argument_ to +∞ or an integer _i_ for which <emu-eqn>0 &lt; _i_</emu-eqn>. It performs the following steps:
+      The abstract operation ToPositiveInteger takes argument _argument_. It converts _argument_  an integer _i_ for which <emu-eqn>0 &lt; _i_</emu-eqn>. It performs the following steps:
+    </p>
+    <emu-alg>
+      1. Let _integer_ be ? ToInteger(_argument_).
+      1. If _integer_ &le; 0, then
+        1. Throw a *RangeError* exception.
+      1. Return _integer_.
+    </emu-alg>
+  </emu-clause>
+  
+  <emu-clause id="sec-temporal-tointeger" aoid="ToInteger">
+    <h1>ToInteger ( _argument_ )</h1>
+    <p>
+      The abstract operation ToInteger takes argument _argument_. It converts _argument_  an integer _i_. It performs the following steps:
     </p>
     <emu-alg>
       1. Let _integer_ be ? ToIntegerOrInfinity(_argument_).
-      1. If _integer_ is *-∞*<sub>𝔽</sub>, then
-        1. Throw a *RangeError* exception.
-      1. If _integer_ &le; 0, then
+      1. If _integer_ is *-∞*<sub>𝔽</sub> or *+∞*<sub>𝔽</sub> , then
         1. Throw a *RangeError* exception.
       1. Return _integer_.
     </emu-alg>
@@ -1432,7 +1443,7 @@
       The relevant property names are given by the List of Strings _fieldNames_, and the required property names are given by the List of Strings _requiredFields_.
       It performs the following steps:
     </p>
-    <emu-note>The value of ? ToIntegerOrInfinity(*undefined*) is 0.</emu-note>
+    <emu-note>The values of ? ToInteger(*undefined*) and ? ToPositiveInteger(*undefined*) are 0.</emu-note>
     <emu-alg>
       1. Assert: Type(_fields_) is Object.
       1. Let _result_ be ! OrdinaryObjectCreate(%Object.prototype%).
@@ -1463,12 +1474,12 @@
         <tbody>
           <tr>
             <td>*"year"*</td>
-            <td>ToIntegerOrInfinity</td>
+            <td>ToInteger</td>
             <td>*undefined*</td>
           </tr>
           <tr>
             <td>*"month"*</td>
-            <td>ToPositiveIntegerOrInfinity</td>
+            <td>ToPositiveInteger</td>
             <td>*undefined*</td>
           </tr>
           <tr>
@@ -1478,37 +1489,37 @@
           </tr>
           <tr>
             <td>*"day"*</td>
-            <td>ToPositiveIntegerOrInfinity</td>
+            <td>ToPositiveInteger</td>
             <td>*undefined*</td>
           </tr>
           <tr>
             <td>*"hour"*</td>
-            <td>ToIntegerOrInfinity</td>
+            <td>ToInteger</td>
             <td>0</td>
           </tr>
           <tr>
             <td>*"minute"*</td>
-            <td>ToIntegerOrInfinity</td>
+            <td>ToInteger</td>
             <td>0</td>
           </tr>
           <tr>
             <td>*"second"*</td>
-            <td>ToIntegerOrInfinity</td>
+            <td>ToInteger</td>
             <td>0</td>
           </tr>
           <tr>
             <td>*"millisecond"*</td>
-            <td>ToIntegerOrInfinity</td>
+            <td>ToInteger</td>
             <td>0</td>
           </tr>
           <tr>
             <td>*"microsecond"*</td>
-            <td>ToIntegerOrInfinity</td>
+            <td>ToInteger</td>
             <td>0</td>
           </tr>
           <tr>
             <td>*"nanosecond"*</td>
-            <td>ToIntegerOrInfinity</td>
+            <td>ToInteger</td>
             <td>0</td>
           </tr>
           <tr>
@@ -1543,7 +1554,7 @@
       The relevant property names are given by the List of Strings _fieldNames_.
       It performs the following steps:
     </p>
-    <emu-note>The value of ? ToIntegerOrInfinity(*undefined*) is 0.</emu-note>
+    <emu-note>The values of ? ToInteger(*undefined*) and ? ToPositiveInteger(*undefined*) are 0.</emu-note>
     <emu-alg>
       1. Assert: Type(_fields_) is Object.
       1. Let _result_ be ! OrdinaryObjectCreate(%Object.prototype%).
