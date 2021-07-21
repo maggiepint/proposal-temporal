@@ -95,32 +95,32 @@
   </emu-clause>
 
   <emu-clause id="sec-temporal-durationhandlefractions" aoid="DurationHandleFractions">
-    <h1>DurationHandleFractions ( _fHours_, _minutes_, _fMinutes_, _seconds_, _fSeconds_, _milliseconds_, _fMilliseconds_, _microseconds_, _fMicroseconds_, _nanoseconds_, _fNanoseconds_ )</h1>
+    <h1>DurationHandleFractions ( _fHours_, _minutes_, _fMinutes_, _seconds_, _milliseconds_, _microseconds_, _nanoseconds_ )</h1>
     <emu-alg>
       1. If _fHours_ is not equal to 0, then
-        1. If any of _minutes_, _fMinutes_, _seconds_, _fSeconds_, _milliseconds_, _fMilliseconds_, _microseconds_, _fMicroseconds_, _nanoseconds_, _fNanoseconds_ is not 0, throw a *RangeError* exception.
+        1. If any of _minutes_, _fMinutes_, _seconds_, _milliseconds_, _microseconds_, _nanoseconds_ is not 0, throw a *RangeError* exception.
         1. Let _mins_ be _fHours_ × 60.
         1. Set _minutes_ to floor(_mins_).
         1. Set _fMinutes_ to _mins_ modulo 1.
       1. If _fMinutes_ is not equal to 0, then
-        1. If any of _seconds_, _fSeconds_, _milliseconds_, _fMilliseconds_, _microseconds_, _fMicroseconds_, _nanoseconds_, _fNanoseconds_ is not 0, throw a *RangeError* exception.
+        1. If any of _seconds_, _milliseconds_, _microseconds_, _nanoseconds_ is not 0, throw a *RangeError* exception.
         1. Let _secs_ be _fMinutes_ × 60.
         1. Set _seconds_ to floor(_secs_).
         1. Set _fSeconds_ to _secs_ modulo 1.
-      1. If _fSeconds_ is not equal to 0, then
-        1. If any of _milliseconds_, _fMilliseconds_, _microseconds_, _fMicroseconds_, _nanoseconds_, _fNanoseconds_ is not 0, throw a *RangeError* exception.
-        1. Let _mils_ be _fSeconds_ × 1000.
-        1. Set _milliseconds_ floor(_mils_).
-        1. Set _fMilliseconds_ to _mils_ modulo 1.
-      1. If _fMilliseconds_ is not equal to 0, then
-        1. If any of _microseconds_, _fMicroseconds_, _nanoseconds_, _fNanoseconds_ is not 0, throw a *RangeError* exception.
-        1. Let _mics_ be _fMilliseconds_ × 1000.
-        1. Set _microseconds_ to floor(_mics_).
-        1. Set _fMicroseconds_ to _mils_ modulo 1.
-      1. If _fMicroseconds_ is not equal to 0, then
-        1. If either of _nanoseconds_, _fNanoseconds_ is not 0, throw a *RangeError* exception.
-        1. Let _nans_ be _fMicroseconds_ × 1000.
-        1. Set _nanoseconds_ to floor(_nans_).
+        1. If _fSeconds_ is not equal to 0, then
+          1. If any of _milliseconds_, _microseconds_, _nanoseconds_ is not 0, throw a *RangeError* exception.
+          1. Let _mils_ be _fSeconds_ × 1000.
+          1. Set _milliseconds_ to floor(_mils_).
+          1. Set _fMilliseconds_ to _mils_ modulo 1.
+          1. If _fMilliseconds_ is not equal to 0, then
+            1. If either _microseconds_ or _nanoseconds_ is not 0, throw a *RangeError* exception.
+            1. Let _mics_ be _fMilliseconds_ × 1000.
+            1. Set _microseconds_ to floor(_mics_).
+            1. Set _fMicroseconds_ to _mils_ modulo 1.
+            1. If _fMicroseconds_ is not equal to 0, then
+              1. If _nanoseconds_ is not 0, throw a *RangeError* exception.
+              1. Let _nans_ be _fMicroseconds_ × 1000.
+              1. Set _nanoseconds_ to floor(_nans_).
       1. Return {
         [[Minutes]]: _minutes_,
         [[Seconds]]: _seconds_,
@@ -1277,7 +1277,7 @@
         1. Set _fMinutes_ to ! ToIntegerOrInfinity(_fraction_) × _factor_ / 10 raised to the power of the length of _fMinutes_.
       1. Else,
         1. Set _fMinutes_ to 0.
-      1. Let _result_ be ? DurationHandleFractions(_fHours_, _minutes_, _fMinutes_, _seconds_, 0, _milliseconds_, 0, _microseconds_, 0, _nanoseconds_, 0).
+      1. Let _result_ be ? DurationHandleFractions(_fHours_, _minutes_, _fMinutes_, _seconds_, _milliseconds_, _microseconds_, _nanoseconds_).
       1. Return the new Record {
         [[Years]]: _years_,
         [[Months]]: _months_,
