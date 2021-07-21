@@ -697,12 +697,16 @@
         1. For each row of <emu-xref href="#table-temporal-temporaldurationlike-properties"></emu-xref>, except the header row, in table order, do
           1. Let _prop_ be the Property value of the current row.
           1. Let _val_ be ? Get(_temporalDurationLike_, _prop_).
-          1. If _val_ is not *undefined*, then
+          1. If _val_ is *undefined*, then
+            1. Set _result_'s internal slot whose name is the Internal Slot value of the current row to 0.
+          1. Else, 
             1. Set _any_ to *true*.
-          1. Let _val_ be ? ToNumber(_val_).
-          1. If floor(_val_) ≠ _val_, then
-            1. Throw a *RangeError* exception.
-          1. Set _result_'s internal slot whose name is the Internal Slot value of the current row to _val_.
+            1. Let _val_ be ? ToNumber(_val_).
+            1. If _val_ is *NaN*, +∞ or -∞, then        
+              1. Throw a *RangeError* exception.
+            1. If floor(_val_) ≠ _val_, then
+              1. Throw a *RangeError* exception.
+            1. Set _result_'s internal slot whose name is the Internal Slot value of the current row to _val_.
         1. If _any_ is *false*, then
           1. Throw a *TypeError* exception.
         1. Return _result_.
