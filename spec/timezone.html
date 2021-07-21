@@ -619,12 +619,12 @@
         1. Let _offsetAfter_ be ? GetOffsetNanosecondsFor(_timeZone_, _dayAfter_).
         1. Let _nanoseconds_ be _offsetAfter_ − _offsetBefore_.
         1. If _disambiguation_ is *"earlier"*, then
-          1. Let _earlier_ be ? AddDateTime(_dateTime_.[[ISOYear]], _dateTime_.[[ISOMonth]], _dateTime_.[[ISODay]], _dateTime_.[[ISOHour]], _dateTime_.[[ISOMinute]], _dateTime_.[[ISOSecond]], _dateTime_.[[ISOMillisecond]], _dateTime_.[[ISOMicrosecond]], _dateTime_.[[ISONanosecond]], 0, 0, 0, 0, 0, 0, 0, 0, 0, −_nanoseconds_, *"constrain"*).
+          1. Let _earlier_ be ? AddDateTime(_dateTime_.[[ISOYear]], _dateTime_.[[ISOMonth]], _dateTime_.[[ISODay]], _dateTime_.[[ISOHour]], _dateTime_.[[ISOMinute]], _dateTime_.[[ISOSecond]], _dateTime_.[[ISOMillisecond]], _dateTime_.[[ISOMicrosecond]], _dateTime_.[[ISONanosecond]], _dateTime_.[[Calendar]], 0, 0, 0, 0, 0, 0, 0, 0, 0, −_nanoseconds_, *undefined*).
           1. Set _possibleInstants_ to ? GetPossibleInstantsFor(_timeZone_, _earlier_).
           1. If _possibleInstants_ is empty, throw a *RangeError* exception.
           1. Return _possibleInstants_[0].
         1. Assert: _disambiguation_ is *"compatible"* or *"later"*.
-        1. Let _later_ be ? AddDateTime(_dateTime_.[[ISOYear]], _dateTime_.[[ISOMonth]], _dateTime_.[[ISODay]], _dateTime_.[[ISOHour]], _dateTime_.[[ISOMinute]], _dateTime_.[[ISOSecond]], _dateTime_.[[ISOMillisecond]], _dateTime_.[[ISOMicrosecond]], _dateTime_.[[ISONanosecond]], 0, 0, 0, 0, 0, 0, 0, 0, 0, _nanoseconds_, *"constrain"*).
+        1. Let _later_ be ? AddDateTime(_dateTime_.[[ISOYear]], _dateTime_.[[ISOMonth]], _dateTime_.[[ISODay]], _dateTime_.[[ISOHour]], _dateTime_.[[ISOMinute]], _dateTime_.[[ISOSecond]], _dateTime_.[[ISOMillisecond]], _dateTime_.[[ISOMicrosecond]], _dateTime_.[[ISONanosecond]], _dateTime_.[[Calendar]], 0, 0, 0, 0, 0, 0, 0, 0, 0, _nanoseconds_, *undefined*).
         1. Set _possibleInstants_ to ? GetPossibleInstantsFor(_timeZone_, _later_).
         1. Set _n_ to _possibleInstants_'s length.
         1. If _n_ = 0, throw a *RangeError* exception.
