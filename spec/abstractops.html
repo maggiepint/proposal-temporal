@@ -1303,21 +1303,12 @@
       1. Assert: Type(_isoString_) is String.
       1. If _isoString_ does not satisfy the syntax of a |TemporalMonthDayString| (see <emu-xref href="#sec-temporal-iso8601grammar"></emu-xref>), then
         1. Throw a *RangeError* exception.
-      1. Let _year_, _month_ and _day_ be the parts of _isoString_ produced respectively by the |DateYear|, |DateMonth| and |DateDay| productions, or *undefined* if not present.
-      1. If _year_ is not *undefined*, then
-        1. Set _year_ to ! ToIntegerOrInfinity(_year_).
-      1. If _month_ is *undefined*, then
-        1. Set _month_ to 1.
-      1. Else,
-        1. Set _month_ to ! ToIntegerOrInfinity(_month_).
-      1. If _day_ is *undefined*, then
-        1. Set _day_ to 1.
-      1. Else,
-        1. Set _day_ to ! ToIntegerOrInfinity(_day_).
+      1. Let _result_ be ? ParseISODateTime(_isoString_).
       1. Return the new Record {
-        [[Year]]: _year_,
-        [[Month]]: _month_,
-        [[Day]]: _day_
+        [[Year]]: _result_.[[Year]],
+        [[Month]]: _result_.[[Month]],
+        [[Day]]: _result_.[[Day]],
+        [[Calendar]]: _result_.[[Calendar]]
         }.
     </emu-alg>
   </emu-clause>
