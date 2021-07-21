@@ -9,7 +9,7 @@
   "scripts": {
     "coverage": "c8 report --reporter html",
     "test": "node --no-warnings --experimental-modules --icu-data-dir node_modules/full-icu --loader ./test/resolve.source.mjs ./test/all.mjs",
-    "test-cookbook": "TEST=all npm run test-cookbook-one && TEST=stockExchangeTimeZone npm run test-cookbook-one",
+    "test-cookbook": "TEST=all npm run test-cookbook-one && TEST=stockExchangeTimeZone npm run test-cookbook-one && TEST=makeMockTemporal npm run test-cookbook-one",
     "test-cookbook-one": "node --no-warnings --experimental-modules --icu-data-dir node_modules/full-icu --loader ./test/resolve.cookbook.mjs ../docs/cookbook/$TEST.mjs",
     "test262": "./ci_test.sh",
     "codecov:tests": "NODE_V8_COVERAGE=coverage/tmp npm run test && c8 report --reporter=text-lcov > coverage/tests.lcov && codecov -F tests -f coverage/tests.lcov",

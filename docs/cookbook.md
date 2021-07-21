@@ -471,3 +471,9 @@ Extend Temporal to support arbitrarily-large years (e.g., **+635427810-02-02**) 
 An example of using `Temporal.TimeZone` for other purposes than a standard time zone.
 
 → [NYSE time zone](cookbook-nyse.md)
+
+### Locked-down Temporal
+
+"Lock down" the Temporal object so that it doesn't leak any information about the host system, and the system clock is controllable, for use in security applications or for mocking in tests.
+
+→ [Locked-down Temporal](cookbook-mock.md)
