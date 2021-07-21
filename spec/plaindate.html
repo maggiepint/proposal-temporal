@@ -732,7 +732,7 @@
             1. Set _mid_ be ! AddISODate(_y1_, _m1_, _d1_, _years_, _months_, 0, 0, *"constrain"*).
             1. Let _midSign_ be -(! CompareISODate(_mid_.[[Year]], _mid_.[[Month]], _mid_.[[Day]], _y2_, _m2_, _d2_)).
           1. Let _days_ be 0.
-          1. If _mid_.[[Month]] is equal to _end_.[[Month]] and _mid_.[[Year]] is equal to _mid_.[[Year]], set _days_ to _end_.[[Day]] - _mid_.[[Day]].
+          1. If _mid_.[[Month]] is equal to _end_.[[Month]] and _mid_.[[Year]] is equal to _end_.[[Year]], set _days_ to _end_.[[Day]] - _mid_.[[Day]].
           1. Else if _sign_ &lt; 0, set _days_ to -_mid_.[[Day]] - (! ISODaysInMonth(_end_.[[Year]], _end_.[[Month]]) - _end_.[[Day]]).
           1. Else, set _days_ to _end_.[[Day]] + (! ISODaysInMonth(_mid_.[[Year]], _mid_.[[Month]]) - _mid_.[[Day]]).
           1. If _largestUnit_ is *"month"*, then
