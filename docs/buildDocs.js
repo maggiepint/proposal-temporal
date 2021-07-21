@@ -94,6 +94,7 @@ class CustomRenderer extends marked.Renderer {
 
 async function render(markdownFile, head, tail) {
   await mkdirp('../out/docs/assets');
+  await mkdirp(path.join('../out/docs', path.dirname(markdownFile)));
   let markdownText = await fs.readFile(markdownFile, { encoding });
 
   // Resolve transcludes
@@ -121,9 +122,7 @@ async function go() {
     const tail = await fs.readFile('tail.html.part', { encoding });
     // copy or render /docs/* to /out/docs/
     await Promise.all(
-      (
-        await fs.readdir('.')
-      ).map((file) => {
+      [...(await fs.readdir('.')), ...(await fs.readdir('ja')).map((x) => 'ja/' + x)].map((file) => {
         switch (path.extname(file)) {
           // copy files *.css, *.html, *.svg to /out/docs
           case '.css':
@@ -151,6 +150,7 @@ async function go() {
     await Promise.all(
       [
         ['../out/docs/README.html', '../out/docs/index.html'],
+        ['../out/docs/ja/README.html', '../out/docs/ja/index.html'],
         ['node_modules/prismjs/themes/prism.css', '../out/docs/prism.css']
       ].map(([file1, file2]) => {
         return fs.copyFile(path.resolve(file1), path.resolve(file2));

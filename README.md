@@ -45,7 +45,10 @@ The specification text can be found [here](https://tc39.es/proposal-temporal/).
 
 ## Documentation
 
-Reference documentation and examples can be found [here](https://tc39.es/proposal-temporal/docs/index.html).
+Reference documentation and examples can be found below.
+
+- [Temporal Document(en)](https://tc39.es/proposal-temporal/docs/index.html)
+- [Temporal のドキュメント(ja)](https://tc39.es/proposal-temporal/docs/ja/index.html) (translated a part of the English document into Japanese)
 
 A cookbook to help you get started and learn the ins and outs of Temporal is available [here](https://tc39.es/proposal-temporal/docs/cookbook.html)
 
