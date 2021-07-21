@@ -177,8 +177,8 @@ describe('TimeZone', () => {
     it(`(${zone}).getPlainDateTimeFor(${inst})`, () =>
       assert(zone.getPlainDateTimeFor(inst) instanceof Temporal.PlainDateTime));
     it(`(${zone}).getInstantFor(${dtm})`, () => assert(zone.getInstantFor(dtm) instanceof Temporal.Instant));
-    it(`(${zone}).getNextTransition(${inst})`, () => zone.getNextTransition(inst), null);
-    it(`(${zone}).getPreviousTransition(${inst})`, () => zone.getPreviousTransition(inst), null);
+    it(`(${zone}).getNextTransition(${inst})`, () => equal(zone.getNextTransition(inst), null));
+    it(`(${zone}).getPreviousTransition(${inst})`, () => equal(zone.getPreviousTransition(inst), null));
     it('wraps around to the next day', () =>
       equal(`${zone.getPlainDateTimeFor(Temporal.Instant.from('2020-02-06T23:59Z'))}`, '2020-02-07T00:59:00'));
   });
@@ -192,8 +192,8 @@ describe('TimeZone', () => {
     it(`(${zone}).getPlainDateTimeFor(${inst})`, () =>
       assert(zone.getPlainDateTimeFor(inst) instanceof Temporal.PlainDateTime));
     it(`(${zone}).getInstantFor(${dtm})`, () => assert(zone.getInstantFor(dtm) instanceof Temporal.Instant));
-    it(`(${zone}).getNextTransition(${inst})`, () => zone.getNextTransition(inst), null);
-    it(`(${zone}).getPreviousTransition(${inst})`, () => zone.getPreviousTransition(inst), null);
+    it(`(${zone}).getNextTransition(${inst})`, () => equal(zone.getNextTransition(inst), null));
+    it(`(${zone}).getPreviousTransition(${inst})`, () => equal(zone.getPreviousTransition(inst), null));
   });
   describe('America/Los_Angeles', () => {
     const zone = new Temporal.TimeZone('America/Los_Angeles');
@@ -209,12 +209,16 @@ describe('TimeZone', () => {
       for (let i = 0, txn = inst; i < 4; i++) {
         const transition = zone.getNextTransition(txn);
         assert(transition);
+        assert(!transition.equals(txn));
+        txn = transition;
       }
     });
     it(`(${zone}).getPreviousTransition() x 4 transitions`, () => {
       for (let i = 0, txn = inst; i < 4; i++) {
         const transition = zone.getPreviousTransition(txn);
         assert(transition);
+        assert(!transition.equals(txn));
+        txn = transition;
       }
     });
   });
@@ -228,8 +232,8 @@ describe('TimeZone', () => {
     it(`(${zone}).getPlainDateTimeFor(${inst})`, () =>
       equal(`${zone.getPlainDateTimeFor(inst)}`, '1900-01-01T12:19:32'));
     it(`(${zone}).getInstantFor(${dtm})`, () => equal(`${zone.getInstantFor(dtm)}`, '1900-01-01T11:40:28Z'));
-    it(`(${zone}).getNextTransition(${inst})`, () => zone.getNextTransition(inst), null);
-    it(`(${zone}).getPreviousTransition(${inst})`, () => zone.getPreviousTransition(inst), null);
+    it(`(${zone}).getNextTransition(${inst})`, () => equal(`${zone.getNextTransition(inst)}`, '1916-04-30T23:40:28Z'));
+    it(`(${zone}).getPreviousTransition(${inst})`, () => equal(zone.getPreviousTransition(inst), null));
   });
   describe('with DST change', () => {
     it('clock moving forward', () => {
@@ -421,6 +425,11 @@ describe('TimeZone', () => {
       equal(nyc.getNextTransition(a1).toString(), '2019-11-03T06:00:00Z');
       equal(nyc.getNextTransition(a2).toString(), '1883-11-18T17:00:00Z');
     });
+    it('should not return the same as its input if the input is a transition point', () => {
+      const inst = Temporal.Instant.from('2019-01-01T00:00Z');
+      equal(`${nyc.getNextTransition(inst)}`, '2019-03-10T07:00:00Z');
+      equal(`${nyc.getNextTransition(nyc.getNextTransition(inst))}`, '2019-11-03T06:00:00Z');
+    });
     it('casts argument', () => {
       equal(`${nyc.getNextTransition('2019-04-16T21:01Z')}`, '2019-11-03T06:00:00Z');
     });
@@ -438,6 +447,11 @@ describe('TimeZone', () => {
 
       equal(london.getPreviousTransition(a1).toString(), '2020-03-29T01:00:00Z');
       equal(london.getPreviousTransition(a2).toString(), '1847-12-01T00:01:15Z');
+    });
+    it('should not return the same as its input if the input is a transition point', () => {
+      const inst = Temporal.Instant.from('2020-06-01T00:00Z');
+      equal(`${london.getPreviousTransition(inst)}`, '2020-03-29T01:00:00Z');
+      equal(`${london.getPreviousTransition(london.getPreviousTransition(inst))}`, '2019-10-27T01:00:00Z');
     });
     it('casts argument', () => {
       equal(`${london.getPreviousTransition('2020-06-11T21:01Z')}`, '2020-03-29T01:00:00Z');

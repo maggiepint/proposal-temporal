@@ -471,3 +471,9 @@ Extend Temporal to support arbitrarily-large years (e.g., **+635427810-02-02**) 
 An example of using `Temporal.TimeZone` for other purposes than a standard time zone.
 
 → [NYSE time zone](cookbook-nyse.md)
+
+### Time zone directly from tzdata rules
+
+An example of building your own `Temporal.TimeZone` object from [tzdata-compatible rules](https://data.iana.org/time-zones/tz-how-to.html).
+
+→ [Time zone from tzdata](cookbook-tzdata.md)

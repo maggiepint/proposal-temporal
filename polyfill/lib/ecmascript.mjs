@@ -2201,7 +2201,7 @@ export const ES = ObjectAssign({}, ES2020, {
   },
   GetIANATimeZonePreviousTransition: (epochNanoseconds, id) => {
     const lowercap = BEFORE_FIRST_DST; // 1847-01-01T00:00:00Z
-    let rightNanos = epochNanoseconds;
+    let rightNanos = bigInt(epochNanoseconds).minus(1);
     let rightOffsetNs = ES.GetIANATimeZoneOffsetNanoseconds(rightNanos, id);
     let leftNanos = rightNanos;
     let leftOffsetNs = rightOffsetNs;
