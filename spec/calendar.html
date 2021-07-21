@@ -247,7 +247,7 @@
         1. Let _identifier_ be ? ToString(_temporalCalendarLike_).
         1. If ! IsBuiltinCalendar(_identifier_) is *false*, then
           1. Let _identifier_ be ? ParseTemporalCalendarString(_identifier_).
-        1. Return ? CreateTemporalCalendar(_identifier_).
+        1. Return ! CreateTemporalCalendar(_identifier_).
       </emu-alg>
     </emu-clause>
 
