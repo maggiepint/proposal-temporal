@@ -418,7 +418,7 @@
         1. Perform ? RequireInternalSlot(_zonedDateTime_, [[InitializedTemporalZonedDateTime]]).
         1. Let _timeZone_ be _zonedDateTime_.[[TimeZone]].
         1. Let _instant_ be ! CreateTemporalInstant(_zonedDateTime_.[[Nanoseconds]]).
-        1. Let _isoCalendar_ be ? GetISO8601Calendar().
+        1. Let _isoCalendar_ be ! GetISO8601Calendar().
         1. Let _temporalDateTime_ be ? BuiltinTimeZoneGetPlainDateTimeFor(_timeZone_, _instant_, _isoCalendar_).
         1. Let _year_ be _temporalDateTime_.[[ISOYear]].
         1. Let _month_ be _temporalDateTime_.[[ISOMonth]].
@@ -783,7 +783,7 @@
         1. Let _instant_ be ! CreateTemporalInstant(_zonedDateTime_.[[Nanoseconds]]).
         1. Let _calendar_ be _zonedDateTime_.[[Calendar]].
         1. Let _temporalDateTime_ be ? BuiltinTimeZoneGetPlainDateTimeFor(_timeZone_, _instant_, _calendar_).
-        1. Let _isoCalendar_ be ? GetISO8601Calendar().
+        1. Let _isoCalendar_ be ! GetISO8601Calendar().
         1. Let _dtStart_ be ? CreateTemporalDateTime(_temporalDateTime_.[[ISOYear]], _temporalDateTime_.[[ISOMonth]], _temporalDateTime_.[[ISODay]], 0, 0, 0, 0, 0, 0, _isoCalendar_).
         1. Let _instantStart_ be ? BuiltinTimeZoneGetInstantFor(_timeZone_, _dtStart_, *"compatible"*).
         1. Let _startNs_ be _instantStart_.[[Nanoseconds]].
@@ -1078,7 +1078,7 @@
       </p>
       <emu-alg>
         1. Assert: _offsetNanoseconds_ is an integer or *null*.
-        1. Let _calendar_ be ? GetISO8601Calendar().
+        1. Let _calendar_ be ! GetISO8601Calendar().
         1. Let _dateTime_ be ? CreateTemporalDateTime(_year_, _month_, _day_, _hour_, _minute_. _second_, _millisecond_, _microsecond_, _nanosecond_, _calendar_).
         1. If _offsetNanoseconds_ is *null*, or _offset_ is *"ignore"*, then
           1. Let _instant_ be ? BuiltinTimeZoneGetInstantFor(_timeZone_, _dateTime_, _disambiguation_).
@@ -1164,7 +1164,7 @@
         1. Let _ns_ be ? RoundTemporalInstant(_zonedDateTime_.[[Nanoseconds]], _increment_, _unit_, _roundingMode_).
         1. Let _timeZone_ be _zonedDateTime_.[[TimeZone]].
         1. Let _instant_ be ! CreateTemporalInstant(_ns_).
-        1. Let _isoCalendar_ be ? GetISO8601Calendar().
+        1. Let _isoCalendar_ be ! GetISO8601Calendar().
         1. Let _temporalDateTime_ be ? BuiltinTimeZoneGetPlainDateTimeFor(_timeZone_, _instant_, _isoCalendar_).
         1. Let _dateTimeString_ be ? TemporalDateTimeToString(_temporalDateTime_.[[ISOYear]], _temporalDateTime_.[[ISOMonth]], _temporalDateTime_.[[ISODay]], _temporalDateTime_.[[ISOHour]], _temporalDateTime_.[[ISOMinute]], _temporalDateTime_.[[ISOSecond]], _temporalDateTime_.[[ISOMillisecond]], _temporalDateTime_.[[ISOMicrosecond]], _temporalDateTime_.[[ISONanosecond]], _isoCalendar_, _precision_, *"never"*).
         1. If _showOffset_ is *"never"*, then

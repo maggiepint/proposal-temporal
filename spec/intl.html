@@ -728,7 +728,7 @@
           1. Let _instant_ be ? BuiltinTimeZoneGetInstantFor(_timeZone_, _plainDateTime_, *"compatible"*).
         1. If _x_ has an [[InitializedTemporalTime]] internal slot, then
           1. Let _pattern_ be _dateTimeFormat_.[[TemporalPlainTimePattern]].
-          1. Let _isoCalendar_ be ? GetISO8601Calendar().
+          1. Let _isoCalendar_ be ! GetISO8601Calendar().
           1. Let _plainDateTime_ be ? CreateTemporalDateTime(1970, 1, 1, _x_.[[ISOHour]], _x_.[[ISOMinute]], _x_.[[ISOSecond]], _x_.[[ISOMillisecond]], _x_.[[ISOMicrosecond]], _x_.[[ISONanosecond]], _isoCalendar_).
           1. Let _instant_ be ? BuiltinTimeZoneGetInstantFor(_timeZone_, _plainDateTime_, *"compatible"*).
         1. If _x_ has an [[InitializedTemporalDateTime]] internal slot, then

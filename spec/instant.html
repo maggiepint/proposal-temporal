@@ -431,7 +431,7 @@
           1. If _timeZoneProperty_ is not *undefined*, then
             1. Set _item_ to _timeZoneProperty_.
         1. Let _timeZone_ be ? ToTemporalTimeZone(_item_).
-        1. Let _calendar_ be ? GetISO8601Calendar().
+        1. Let _calendar_ be ! GetISO8601Calendar().
         1. Return ? CreateTemporalZonedDateTime(_instant_.[[Nanoseconds]], _timeZone_, _calendar_).
       </emu-alg>
     </emu-clause>
@@ -607,7 +607,7 @@
         1. Let _outputTimeZone_ be _timeZone_.
         1. If _outputTimeZone_ is *undefined*, then
           1. Set _outputTimeZone_ to ? CreateTemporalTimeZone(*"UTC"*).
-        1. Let _isoCalendar_ be ? GetISO8601Calendar().
+        1. Let _isoCalendar_ be ! GetISO8601Calendar().
         1. Let _dateTime_ be ? BuiltinTimeZoneGetPlainDateTimeFor(_outputTimeZone_, _instant_, _isoCalendar_).
         1. Let _dateTimeString_ be ? TemporalDateTimeToString(_dateTime_.[[ISOYear]], _dateTime_.[[ISOMonth]], _dateTime_.[[ISODay]], _dateTime_.[[ISOHour]], _dateTime_.[[ISOMinute]], _dateTime_.[[ISOSecond]], _dateTime_.[[ISOMillisecond]], _dateTime_.[[ISOMicrosecond]], _dateTime_.[[ISONanosecond]], *undefined*, _precision_, *"never"*).
         1. If _timeZone_ is *undefined*, then

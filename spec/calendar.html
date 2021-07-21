@@ -42,7 +42,7 @@
     <emu-clause id="sec-temporal-getiso8601calendar" aoid="GetISO8601Calendar">
       <h1>GetISO8601Calendar ( )</h1>
       <emu-alg>
-        1. Return ? GetBuiltinCalendar(*"iso8601"*).
+        1. Return ! GetBuiltinCalendar(*"iso8601"*).
       </emu-alg>
     </emu-clause>
 
@@ -259,7 +259,7 @@
       </p>
       <emu-alg>
         1. If _temporalCalendarLike_ is *undefined*, then
-          1. Return ? GetISO8601Calendar().
+          1. Return ! GetISO8601Calendar().
         1. Return ? ToTemporalCalendar(_temporalCalendarLike_).
       </emu-alg>
     </emu-clause>
