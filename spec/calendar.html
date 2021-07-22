@@ -69,7 +69,7 @@
         1. Let _mergeFields_ be ? GetMethod(_calendar_, *"mergeFields"*).
         1. If _mergeFields_ is *undefined*, then
           1. Return ? DefaultMergeFields(_fields_, _additionalFields_).
-        1. Return ? Call(_mergeFields_, _calendar_, « _fields_, _additionalFields_ »).
+        1. Return ? ToObject(? Call(_mergeFields_, _calendar_, « _fields_, _additionalFields_ »)).
       </emu-alg>
     </emu-clause>
 
